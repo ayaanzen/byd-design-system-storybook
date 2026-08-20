@@ -1,0 +1,19 @@
+
+.uedp-component19 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--uedp-rounded-full, 9999px);
+  border: 1.5px solid var(--uedp-neutral-300, #D4D4D4);
+  background-color: var(--byd-brand-white, #FFFFFF);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.uedp-component19.active {
+  background-color: var(--byd-brand-primary, #EC1C24);
+  border-color: var(--byd-brand-primary, #EC1C24);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(236, 28, 36, 0.3);
+}

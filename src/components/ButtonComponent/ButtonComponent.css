@@ -1,0 +1,62 @@
+
+.uedp-button-component {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  padding: 14px 28px;
+  border-radius: var(--uedp-rounded-xl, 12px);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  border: 1.5px solid transparent;
+  font-family: inherit;
+  text-transform: uppercase;
+}
+
+.uedp-button-component.type-fill {
+  background-color: var(--byd-brand-primary, #EC1C24);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(236, 28, 36, 0.25);
+}
+
+.uedp-button-component.type-fill.state-hover,
+.uedp-button-component.type-fill:hover:not(:disabled) {
+  background-color: var(--byd-brand-primary-hover, #C4151C);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(236, 28, 36, 0.35);
+}
+
+.uedp-button-component.type-fill.state-active,
+.uedp-button-component.type-fill:active:not(:disabled) {
+  background-color: var(--byd-brand-primary-pressed, #8C0711);
+  transform: translateY(0);
+}
+
+.uedp-button-component.type-fill.state-focus,
+.uedp-button-component.type-fill:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(236, 28, 36, 0.4);
+}
+
+.uedp-button-component.type-fill.state-disabled,
+.uedp-button-component:disabled {
+  background-color: var(--uedp-neutral-200, #E5E5E5);
+  color: var(--uedp-neutral-500, #737373);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.uedp-button-component.type-outline {
+  background-color: transparent;
+  border-color: var(--byd-brand-carbon, #0A0A0A);
+  color: var(--byd-brand-carbon, #0A0A0A);
+}
+
+.uedp-button-component.type-outline:hover:not(:disabled) {
+  border-color: var(--byd-brand-primary, #EC1C24);
+  color: var(--byd-brand-primary, #EC1C24);
+}

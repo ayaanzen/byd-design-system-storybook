@@ -1,0 +1,53 @@
+
+.uedp-component-18 {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  height: 320px;
+  background: linear-gradient(135deg, #0A0A0A 0%, #171717 60%, #262626 100%);
+  border: 1px solid #333333;
+  border-radius: var(--uedp-rounded-3xl, 24px);
+  overflow: hidden;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--byd-brand-white, #FFFFFF);
+  box-shadow: 0 20px 30px -5px rgba(0,0,0,0.5);
+}
+
+.uedp-component-18__tag {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--byd-brand-primary, #EC1C24);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.uedp-component-18__title {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #FFFFFF;
+}
+
+.uedp-component-18__specs {
+  display: flex;
+  gap: 24px;
+}
+
+.uedp-component-18__spec-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.uedp-component-18__spec-val {
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.uedp-component-18__spec-lbl {
+  font-size: 11px;
+  color: var(--uedp-neutral-400, #A3A3A3);
+}

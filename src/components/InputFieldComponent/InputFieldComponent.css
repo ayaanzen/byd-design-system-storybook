@@ -1,0 +1,56 @@
+
+.uedp-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: inherit;
+  max-width: 320px;
+  width: 100%;
+}
+.uedp-input-field__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--byd-brand-carbon, #0A0A0A);
+}
+.uedp-input-field__wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: var(--uedp-rounded-lg, 8px);
+  border: 1.5px solid var(--uedp-neutral-300, #D4D4D4);
+  background-color: #FFFFFF;
+  padding: 10px 14px;
+  transition: all 0.2s ease;
+}
+.uedp-input-field__input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  color: var(--byd-brand-black, #000000);
+  font-family: inherit;
+}
+.uedp-input-field__wrapper.state-active,
+.uedp-input-field__wrapper:focus-within {
+  border-color: var(--byd-brand-primary, #EC1C24);
+  box-shadow: 0 0 0 3px rgba(236, 28, 36, 0.15);
+}
+.uedp-input-field__wrapper.state-success {
+  border-color: var(--uedp-green-600, #16A34A);
+  background-color: var(--uedp-green-50, #F0FDF4);
+}
+.uedp-input-field__wrapper.state-failure {
+  border-color: var(--byd-brand-primary, #EC1C24);
+  background-color: var(--byd-brand-primary-subtle, #FEF2F2);
+}
+.uedp-input-field__wrapper.state-disabled {
+  background-color: var(--uedp-neutral-100, #F5F5F5);
+  border-color: var(--uedp-neutral-200, #E5E5E5);
+  cursor: not-allowed;
+}
+.uedp-input-field__message {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.uedp-input-field__message.success { color: var(--uedp-green-600, #16A34A); }
+.uedp-input-field__message.failure { color: var(--byd-brand-primary, #EC1C24); font-weight: 600; }

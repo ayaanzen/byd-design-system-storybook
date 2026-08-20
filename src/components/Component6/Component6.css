@@ -1,0 +1,40 @@
+
+.uedp-component6 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--uedp-rounded-full, 9999px);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  border: 1.5px solid var(--uedp-neutral-300, #D4D4D4);
+  background-color: var(--byd-brand-white, #FFFFFF);
+  color: var(--byd-brand-carbon, #0A0A0A);
+  font-family: inherit;
+}
+
+.uedp-component6.variant-default {
+  background-color: var(--byd-brand-primary, #EC1C24);
+  color: #FFFFFF;
+  border-color: var(--byd-brand-primary, #EC1C24);
+  box-shadow: 0 2px 8px rgba(236, 28, 36, 0.25);
+}
+
+.uedp-component6.variant-variant2 {
+  background-color: var(--byd-brand-white, #FFFFFF);
+  color: var(--byd-brand-carbon, #0A0A0A);
+  border-color: var(--uedp-neutral-300, #D4D4D4);
+}
+
+.uedp-component6:hover {
+  border-color: var(--byd-brand-primary, #EC1C24);
+  color: var(--byd-brand-primary, #EC1C24);
+  transform: translateY(-1px);
+}
+
+.uedp-component6.variant-default:hover {
+  background-color: var(--byd-brand-primary-hover, #C4151C);
+  color: #FFFFFF;
+}

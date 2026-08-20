@@ -1,0 +1,33 @@
+import React from 'react';
+import './Frame5475.css';
+
+export interface Frame5475Props {
+  /** Figma Variant: Default | Variant2 */
+  property1?: 'Default' | 'Variant2';
+  trim?: string;
+  price?: string;
+  range?: string;
+  onClick?: () => void;
+}
+
+export const Frame5475: React.FC<Frame5475Props> = ({
+  property1 = 'Default',
+  trim = 'PREMIUM',
+  price = '₹45 70 000',
+  range = "(Ex-showroom price)\nRear Drive\n650km* Range",
+  onClick,
+}) => {
+  return (
+    <div
+      className={`uedp-frame5475 ${property1 === 'Variant2' ? 'active' : ''}`}
+      onClick={onClick}
+      data-layer-name="Frame 5475"
+    >
+      <div>
+        <div className="uedp-frame5475__trim">{trim}</div>
+        <div className="uedp-frame5475__price">{price}</div>
+      </div>
+      <div className="uedp-frame5475__range">{range}</div>
+    </div>
+  );
+};
