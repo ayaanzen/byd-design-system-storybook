@@ -24,14 +24,15 @@
 
 .uedp-button-component.type-fill.state-hover,
 .uedp-button-component.type-fill:hover:not(:disabled) {
-  background-color: var(--byd-brand-primary-hover, #C4151C);
+  background-color: var(--byd-brand-primary, #EC1C24);
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(236, 28, 36, 0.35);
 }
 
 .uedp-button-component.type-fill.state-active,
+.uedp-button-component.type-fill.state-pressed,
 .uedp-button-component.type-fill:active:not(:disabled) {
-  background-color: var(--byd-brand-primary-pressed, #8C0711);
+  background-color: var(--byd-brand-primary, #EC1C24);
   transform: translateY(0);
 }
 

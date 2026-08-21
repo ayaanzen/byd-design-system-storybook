@@ -4,6 +4,7 @@ import './Frame5475.css';
 export interface Frame5475Props {
   /** Figma Variant: Default | Variant2 */
   property1?: 'Default' | 'Variant2';
+  image?: string;
   trim?: string;
   price?: string;
   range?: string;
@@ -12,6 +13,7 @@ export interface Frame5475Props {
 
 export const Frame5475: React.FC<Frame5475Props> = ({
   property1 = 'Default',
+  image = 'https://via.placeholder.com/280x180?text=Car+Image',
   trim = 'PREMIUM',
   price = '₹45 70 000',
   range = "(Ex-showroom price)\nRear Drive\n650km* Range",
@@ -23,6 +25,7 @@ export const Frame5475: React.FC<Frame5475Props> = ({
       onClick={onClick}
       data-layer-name="Frame 5475"
     >
+      <img src={image} alt={trim} className="uedp-frame5475__image" />
       <div>
         <div className="uedp-frame5475__trim">{trim}</div>
         <div className="uedp-frame5475__price">{price}</div>

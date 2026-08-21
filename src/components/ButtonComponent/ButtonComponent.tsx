@@ -2,8 +2,8 @@ import React from 'react';
 import './ButtonComponent.css';
 
 export interface ButtonComponentProps {
-  /** Figma State: Default | Hover | Active | Focus | Disabled */
-  state?: 'Default' | 'Hover' | 'Active' | 'Focus' | 'Disabled';
+  /** Figma State: Default | Hover | Active | Pressed | Focus | Disabled */
+  state?: 'Default' | 'Hover' | 'Active' | 'Pressed' | 'Focus' | 'Disabled';
   /** Figma Type: Fill | Outline */
   type?: 'Fill' | 'Outline';
   children?: React.ReactNode;
