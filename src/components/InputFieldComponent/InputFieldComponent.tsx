@@ -2,50 +2,48 @@ import React from 'react';
 import './InputFieldComponent.css';
 
 export interface InputFieldComponentProps {
-  /** Figma State Variant: Default | Selected | Active | Success | Error | Disabled */
-  state?: 'Default' | 'Selected' | 'Active' | 'Success' | 'Error' | 'Disabled';
+  /** Label for the input */
   label?: string;
+  /** Placeholder text */
   placeholder?: string;
+  /** Hint text below the input */
+  hint?: string;
+  /** Current state of the input */
+  state?: 'inactive' | 'active' | 'filled' | 'success' | 'failure' | 'disabled';
+  /** Value of the input */
   value?: string;
-  helperText?: string;
-  showIcon?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputFieldComponent: React.FC<InputFieldComponentProps> = ({
-  state = 'Default',
-  label = 'Email Address',
+  label = 'Label',
   placeholder = 'Enter your email address',
-  value = '',
-  helperText,
-  showIcon = true,
+  hint = '@gmail.com / @yahoo.com / @outlook.com',
+  state = 'inactive',
+  value,
   onChange,
 }) => {
-  const isSuccess = state === 'Success';
-  const isError = state === 'Error';
-  const isDisabled = state === 'Disabled';
-
   return (
-    <div className="uedp-input-field" data-layer-name="Input field component">
-      {label && <label className="uedp-input-field__label">{label}</label>}
-      <div className={`uedp-input-field__wrapper state-${state.toLowerCase()}`}>
+    <div className={`uedp-input-wrapper state-${state}`}>
+      {label && <label className="uedp-input-label">{label}</label>}
+      <div className="uedp-input-container">
         <input
           type="text"
-          className="uedp-input-field__input"
+          className="uedp-input-field"
           placeholder={placeholder}
           value={value}
-          disabled={isDisabled}
           onChange={onChange}
+          disabled={state === 'disabled'}
         />
-        {showIcon && (
-          <svg className="uedp-input-field__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="10" cy="7" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            <path d="M3 18c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" strokeWidth="1.5" fill="none" />
-          </svg>
-        )}
+        {/* Decorative active underline indicator from Figma */}
+        <div className="uedp-input-active-indicator" />
       </div>
-      {isSuccess && <div className="uedp-input-field__message success">{helperText || 'Email verified successfully.'}</div>}
-      {isError && <div className="uedp-input-field__message error">{helperText || 'Please enter a valid email address.'}</div>}
+      {hint && (
+        <div className="uedp-input-hint">
+          {state === 'failure' && <span className="error-icon">⚠</span>}
+          {hint}
+        </div>
+      )}
     </div>
   );
 };
