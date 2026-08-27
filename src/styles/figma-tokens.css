@@ -1,22 +1,61 @@
 /**
  * Figma Design System Tokens (UEDP-5 A1 Library)
- * BYD Brand Design System Tokens (Red, White, Black, Neutrals)
+ * BYD Brand Design System Tokens — Pixel-accurate from Figma API node data
+ * Colors converted from Figma float RGB (0–1) to hex
  */
 
 :root {
   /* ==========================================================================
-     BYD OFFICIAL BRAND COLORS (RED / WHITE / BLACK)
+     BYD OFFICIAL BRAND COLORS — EXACT FIGMA VALUES
      ========================================================================== */
-  --byd-brand-primary: #EC1C24;        /* BYD Signature Red */
-  --byd-brand-primary-hover: #C4151C;  /* BYD Red Hover */
-  --byd-brand-primary-pressed: #8C0711;/* BYD Red Pressed */
-  --byd-brand-primary-light: #FF5A63;  /* BYD Red Light Accent */
-  --byd-brand-primary-subtle: #FEF2F2; /* BYD Red 50 Tint */
-  --byd-brand-black: #000000;          /* BYD Pure Black */
-  --byd-brand-carbon: #0A0A0A;         /* BYD Carbon Black */
-  --byd-brand-onyx: #171717;           /* BYD Onyx Gray */
-  --byd-brand-white: #FFFFFF;          /* BYD Pure White */
-  --byd-brand-cream: #FAFAFA;          /* BYD Off-White */
+  /* Figma Button Default: r=0.847, g=0.043, b=0.102 → #D80B1A */
+  --byd-brand-primary: #D80B1A;
+  /* Figma Button Hover: r=0.690, g=0.035, b=0.082 → #B0091A */
+  --byd-brand-primary-hover: #B0091A;
+  --byd-brand-primary-pressed: #8C0711;
+  /* Figma Button Focus ring: r=0.996, g=0.886, b=0.886 → #FEE2E2, 3px outside */
+  --byd-button-focus-ring: #FEE2E2;
+  /* Figma Button Disabled: r=0.898, g=0.906, b=0.922 → #E5E7EB */
+  --byd-button-disabled-bg: #E5E7EB;
+  --byd-brand-primary-light: #FF5A63;
+  --byd-brand-primary-subtle: #FEF2F2;
+  --byd-brand-black: #000000;
+  --byd-brand-carbon: #0A0A0A;
+  --byd-brand-onyx: #171717;
+  --byd-brand-white: #FFFFFF;
+  --byd-brand-cream: #FAFAFA;
+
+  /* ==========================================================================
+     TYPOGRAPHY — EXACT FIGMA FONTS
+     ========================================================================== */
+  --byd-font-primary: 'Instrument Sans', sans-serif;  /* All body/button/input */
+  --byd-font-display: 'Krona One', sans-serif;         /* Trim card headings/prices */
+
+  /* ==========================================================================
+     COMPONENT TOKENS — FROM FIGMA NODE SPECS
+     ========================================================================== */
+  /* Button: 137×70px, radius 20px, padding 24px/12px, SemiBold 600 16px */
+  --byd-btn-radius: 20px;
+  --byd-btn-padding-h: 24px;
+  --byd-btn-padding-v: 12px;
+  --byd-btn-font-size: 16px;
+  --byd-btn-font-weight: 600;
+  --byd-btn-height: 70px;
+  --byd-btn-min-width: 137px;
+
+  /* Input field: 342×91px total */
+  --byd-input-width: 342px;
+  --byd-input-radius: 8px;
+  --byd-input-border: #D1D5DB;
+  --byd-input-border-active: #D80B1A;
+  --byd-input-border-success: #16A34A;
+  --byd-input-border-error: #D80B1A;
+  --byd-input-disabled-bg: #F3F4F6;
+
+  /* Trim Cards (Frame 5474/5475/5476): 480×480px, radius 40px */
+  --byd-trim-card-radius: 40px;
+  --byd-trim-card-bg: #F3F4F6;
+  --byd-trim-card-active-border: #D80B1A;
 
   /* Semantic Aliases */
   --uedp-brand-primary: var(--byd-brand-primary);
