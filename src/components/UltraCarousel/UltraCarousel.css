@@ -1,36 +1,78 @@
-
-.uedp-component-23 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 12px;
-  background: var(--byd-brand-white, #FFFFFF);
-  border: 1.5px solid var(--uedp-neutral-200, #E5E5E5);
-  border-radius: var(--uedp-rounded-xl, 12px);
-  width: 140px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.uedp-component-23:hover {
-  border-color: var(--byd-brand-primary, #EC1C24);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(236, 28, 36, 0.1);
-}
-.uedp-component-23__preview {
+.ultra-carousel {
+  /* Figma specs: 1520px max width */
   width: 100%;
-  height: 70px;
-  background: var(--uedp-neutral-100, #F5F5F5);
-  border-radius: var(--uedp-rounded-lg, 8px);
+  max-width: 1520px;
+  height: 208px;
+  background-color: var(--byd-brand-carbon, #0A0A0A);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.ultra-carousel-track {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.ultra-carousel-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.ultra-carousel-item {
+  flex: 0 0 280px;
+  height: 160px;
+  border-radius: 12px;
+  background-color: var(--byd-brand-onyx, #171717);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  color: var(--uedp-neutral-600, #525252);
-  font-weight: 700;
+  border: 2px solid transparent;
 }
-.uedp-component-23__title {
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--byd-brand-carbon, #0A0A0A);
+
+.ultra-carousel-item:hover {
+  background-color: #262626;
+  transform: translateY(-4px);
+}
+
+.ultra-carousel-item.is-active {
+  border-color: var(--byd-brand-primary, #D80B1A);
+  background-color: #262626;
+}
+
+.ultra-carousel-placeholder-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--byd-brand-white, #FFFFFF);
+  font-family: var(--byd-font-primary, 'Instrument Sans', sans-serif);
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.ultra-carousel-item.is-active .ultra-carousel-placeholder-img {
+  opacity: 1;
+}
+
+.ultra-carousel-active-indicator {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background-color: var(--byd-brand-primary, #D80B1A);
+  border-radius: 4px;
 }
