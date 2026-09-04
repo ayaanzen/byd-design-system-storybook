@@ -2,34 +2,30 @@ import React from 'react';
 import './SlidingRoofAnimation.css';
 
 export interface SlidingRoofAnimationProps {
-  /** Figma Variant: MacBook Pro 14" - 1 | MacBook Pro 14" - 2 | MacBook Pro 14" - 3 */
-  property1?: 'MacBook Pro 14" - 1' | 'MacBook Pro 14" - 2' | 'MacBook Pro 14" - 3';
-  modelName?: string;
+  /** Optional custom title overlay */
+  title?: string;
+  /** Interactive click handler */
+  onClick?: () => void;
 }
 
 export const SlidingRoofAnimation: React.FC<SlidingRoofAnimationProps> = ({
-  property1 = 'MacBook Pro 14" - 1',
-  modelName = 'BYD SEAL All-Electric Sedan',
+  title = 'Sliding Roof Animation',
+  onClick,
 }) => {
   return (
-    <div className="uedp-component-18" data-layer-name="Component 18">
-      <div>
-        <div className="uedp-component-18__tag">Flagship Electric</div>
-        <div className="uedp-component-18__title">{modelName}</div>
+    <div className="byd-figma-component-wrapper slidingroofanimation-wrapper" onClick={onClick} data-layer-name="SlidingRoofAnimation">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Interactive Modules</span>
       </div>
-      <div className="uedp-component-18__specs">
-        <div className="uedp-component-18__spec-item">
-          <span className="uedp-component-18__spec-val">3.8s</span>
-          <span className="uedp-component-18__spec-lbl">0-100 km/h</span>
-        </div>
-        <div className="uedp-component-18__spec-item">
-          <span className="uedp-component-18__spec-val">650 km</span>
-          <span className="uedp-component-18__spec-lbl">NEDC Range</span>
-        </div>
-        <div className="uedp-component-18__spec-item">
-          <span className="uedp-component-18__spec-val">530 PS</span>
-          <span className="uedp-component-18__spec-lbl">AWD Power</span>
-        </div>
+      <p className="byd-component-desc">Panoramic sunroof interactive toggle view module.</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/SlidingRoofAnimation.png" 
+          alt="Sliding Roof Animation" 
+          className="byd-component-figma-img" 
+          loading="lazy"
+        />
       </div>
     </div>
   );

@@ -2,34 +2,31 @@ import React from 'react';
 import './Features1.css';
 
 export interface Features1Props {
-  /** Figma Variant: Default | Variant2 | Variant3 | Variant4 | Variant5 */
-  property1?: 'Default' | 'Variant2' | 'Variant3' | 'Variant4' | 'Variant5';
+  /** Optional custom title overlay */
   title?: string;
-  stat?: string;
-  description?: string;
+  /** Interactive click handler */
+  onClick?: () => void;
 }
 
 export const Features1: React.FC<Features1Props> = ({
-  property1 = 'Default',
-  title,
-  stat,
-  description,
+  title = 'Features 1 - Exterior Highlights',
+  onClick,
 }) => {
-  const configs: Record<string, { t: string; s: string; d: string }> = {
-    Default: { t: 'Acceleration', s: '3.8 s', d: '0 to 100 km/h sprint powered by dual electric motors' },
-    Variant2: { t: 'Total Range', s: '650 km', d: 'High energy density Blade Battery with heat pump system' },
-    Variant3: { t: 'Max Output', s: '530 PS', d: 'High performance synchronous magnet electric drivetrain' },
-    Variant4: { t: 'Fast Charge', s: '37 min', d: '30% to 80% ultra-fast DC high voltage charging' },
-    Variant5: { t: 'Aerodynamics', s: '0.219 Cd', d: 'Streamlined ocean aesthetic drag coefficient' },
-  };
-
-  const curr = configs[property1] || configs.Default;
-
   return (
-    <div className="uedp-component-13" data-layer-name="Component 13">
-      <div className="uedp-component-13__title">{title || curr.t}</div>
-      <div className="uedp-component-13__stat">{stat || curr.s}</div>
-      <div className="uedp-component-13__desc">{description || curr.d}</div>
+    <div className="byd-figma-component-wrapper features1-wrapper" onClick={onClick} data-layer-name="Features1">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Feature Grids</span>
+      </div>
+      <p className="byd-component-desc">Grid of exterior design details (headlights, grille, door handles, wheels, mirrors).</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/Features1.png" 
+          alt="Features 1 - Exterior Highlights" 
+          className="byd-component-figma-img" 
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };

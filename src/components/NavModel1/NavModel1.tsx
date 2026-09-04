@@ -2,25 +2,31 @@ import React from 'react';
 import './NavModel1.css';
 
 export interface NavModel1Props {
-  /** Figma Variant: Default | Variant2 */
-  property1?: 'Default' | 'Variant2';
-  label?: string;
+  /** Optional custom title overlay */
+  title?: string;
+  /** Interactive click handler */
   onClick?: () => void;
 }
 
 export const NavModel1: React.FC<NavModel1Props> = ({
-  property1 = 'Default',
-  label,
+  title = 'Nav Model 1',
   onClick,
 }) => {
-  const displayLabel = label || (property1 === 'Default' ? 'Head-up Display' : 'Standard Cluster');
   return (
-    <button
-      className={`uedp-component9 variant-${property1.toLowerCase()}`}
-      onClick={onClick}
-      data-layer-name="Component 9"
-    >
-      {displayLabel}
-    </button>
+    <div className="byd-figma-component-wrapper navmodel1-wrapper" onClick={onClick} data-layer-name="NavModel1">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Navigation</span>
+      </div>
+      <p className="byd-component-desc">Interactive vehicle navigation tab card variant 1.</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/NavModel1.png" 
+          alt="Nav Model 1" 
+          className="byd-component-figma-img" 
+          loading="lazy"
+        />
+      </div>
+    </div>
   );
 };

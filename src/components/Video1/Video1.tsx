@@ -2,27 +2,31 @@ import React from 'react';
 import './Video1.css';
 
 export interface Video1Props {
-  /** Figma Variant: Default | Variant2 */
-  property1?: 'Default' | 'Variant2';
-  active?: boolean;
+  /** Optional custom title overlay */
+  title?: string;
+  /** Interactive click handler */
   onClick?: () => void;
 }
 
 export const Video1: React.FC<Video1Props> = ({
-  property1 = 'Default',
-  active = false,
+  title = 'Video Preview 1',
   onClick,
 }) => {
-  const isChecked = active || property1 === 'Variant2';
   return (
-    <div
-      className={`uedp-component19 ${isChecked ? 'active' : ''}`}
-      onClick={onClick}
-      data-layer-name="Component 19"
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        {isChecked ? <polyline points="20 6 9 17 4 12" /> : <circle cx="12" cy="12" r="8" />}
-      </svg>
+    <div className="byd-figma-component-wrapper video1-wrapper" onClick={onClick} data-layer-name="Video1">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Media Players</span>
+      </div>
+      <p className="byd-component-desc">BYD Seal dynamic video player preview module.</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/Video1.png" 
+          alt="Video Preview 1" 
+          className="byd-component-figma-img" 
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };

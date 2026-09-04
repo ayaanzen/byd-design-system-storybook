@@ -2,31 +2,31 @@ import React from 'react';
 import './CarModelColors.css';
 
 export interface CarModelColorsProps {
-  /** Figma Variant: Default (EMPEROR RED) | Variant2 (COSMOS BLACK) | Variant3 (AURORA WHITE) | Variant4 (SHARK GRAY) */
-  property1?: 'Default' | 'Variant2' | 'Variant3' | 'Variant4';
+  /** Optional custom title overlay */
+  title?: string;
+  /** Interactive click handler */
+  onClick?: () => void;
 }
 
 export const CarModelColors: React.FC<CarModelColorsProps> = ({
-  property1 = 'Default',
+  title = 'Car Model Color Visualizer',
+  onClick,
 }) => {
-  const colorMap: Record<string, { name: string; hex: string; textHex: string }> = {
-    Default: { name: 'EMPEROR RED (BYD SIGNATURE)', hex: '#EC1C24', textHex: '#FFFFFF' },
-    Variant2: { name: 'COSMOS BLACK', hex: '#0A0A0A', textHex: '#FFFFFF' },
-    Variant3: { name: 'AURORA WHITE', hex: '#FFFFFF', textHex: '#0A0A0A' },
-    Variant4: { name: 'SHARK GRAY', hex: '#64748B', textHex: '#FFFFFF' }
-  };
-
-  const curr = colorMap[property1] || colorMap.Default;
-
   return (
-    <div className="uedp-component-25" data-layer-name="Component 25">
-      <div className="uedp-component-25__stage">
-        <div className="uedp-component-25__car-silhouette" style={{ backgroundColor: curr.hex, color: curr.textHex }}>
-          BYD SEAL 360° Visualizer
-        </div>
+    <div className="byd-figma-component-wrapper carmodelcolors-wrapper" onClick={onClick} data-layer-name="CarModelColors">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Visualizers</span>
       </div>
-      <div className="uedp-component-25__title">{curr.name}</div>
-      <div className="uedp-component-25__badge">BYD OCEAN SERIES DESIGN</div>
+      <p className="byd-component-desc">Interactive 360 visualizer with paint swatches (Emperor Red, Cosmos Black, Aurora White, Shark Gray).</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/CarModelColors.png" 
+          alt="Car Model Color Visualizer" 
+          className="byd-component-figma-img" 
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };

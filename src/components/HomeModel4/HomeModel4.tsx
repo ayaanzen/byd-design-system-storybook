@@ -2,25 +2,31 @@ import React from 'react';
 import './HomeModel4.css';
 
 export interface HomeModel4Props {
-  /** Figma Variant: Default | Variant2 */
-  property1?: 'Default' | 'Variant2';
-  label?: string;
+  /** Optional custom title overlay */
+  title?: string;
+  /** Interactive click handler */
   onClick?: () => void;
 }
 
 export const HomeModel4: React.FC<HomeModel4Props> = ({
-  property1 = 'Default',
-  label,
+  title = 'Home Model - HAN',
   onClick,
 }) => {
-  const displayLabel = label || (property1 === 'Default' ? 'Battery 82.5kWh' : 'Battery 61.4kWh');
   return (
-    <button
-      className={`uedp-component6 variant-${property1.toLowerCase()}`}
-      onClick={onClick}
-      data-layer-name="Component 6"
-    >
-      {displayLabel}
-    </button>
+    <div className="byd-figma-component-wrapper homemodel4-wrapper" onClick={onClick} data-layer-name="HomeModel4">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Vehicle Cards</span>
+      </div>
+      <p className="byd-component-desc">BYD HAN model showcase card with side profile asset and red typography badge.</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/HomeModel4.png" 
+          alt="Home Model - HAN" 
+          className="byd-component-figma-img" 
+          loading="lazy"
+        />
+      </div>
+    </div>
   );
 };

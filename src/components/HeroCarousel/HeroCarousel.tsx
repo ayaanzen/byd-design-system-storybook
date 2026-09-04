@@ -2,40 +2,31 @@ import React from 'react';
 import './HeroCarousel.css';
 
 export interface HeroCarouselProps {
-  /** Figma Variant: Frame 26 | Frame 27 | Frame 28 | Frame 29 | Frame 30 | Frame 31 */
-  property1?: 'Frame 26' | 'Frame 27' | 'Frame 28' | 'Frame 29' | 'Frame 30' | 'Frame 31';
-  label?: string;
-  badge?: string;
-  active?: boolean;
+  /** Optional custom title overlay */
+  title?: string;
+  /** Interactive click handler */
   onClick?: () => void;
 }
 
 export const HeroCarousel: React.FC<HeroCarouselProps> = ({
-  property1 = 'Frame 26',
-  label,
-  badge = 'EV SEDAN',
-  active = false,
+  title = 'Hero Carousel',
   onClick,
 }) => {
-  const modelNames: Record<string, string> = {
-    'Frame 26': 'SEAL DYNAMIC',
-    'Frame 27': 'SEAL PREMIUM',
-    'Frame 28': 'SEAL PERFORMANCE',
-    'Frame 29': 'ATTO 3 EXTENDED',
-    'Frame 30': 'DOLPHIN SURF',
-    'Frame 31': 'SEALION 7'
-  };
-
-  const displayLabel = label || modelNames[property1] || property1;
-
   return (
-    <div
-      className={`uedp-component-1 ${active || property1 === 'Frame 26' ? 'active' : ''}`}
-      onClick={onClick}
-      data-layer-name="Component 1"
-    >
-      <span className="uedp-component-1__badge">{badge}</span>
-      <div className="uedp-component-1__label">{displayLabel}</div>
+    <div className="byd-figma-component-wrapper herocarousel-wrapper" onClick={onClick} data-layer-name="HeroCarousel">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Banners & Carousels</span>
+      </div>
+      <p className="byd-component-desc">High-impact Hero Banner & Carousel with BYD brand imagery, headline typography, and model badge overlays.</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/HeroCarousel.png" 
+          alt="Hero Carousel" 
+          className="byd-component-figma-img" 
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };

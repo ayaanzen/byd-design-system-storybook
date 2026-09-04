@@ -1,47 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './UltraCarousel.css';
 
 export interface UltraCarouselProps {
-  /** Figma Variant: Frame 28 | Frame 29 | Frame 30 | Frame 31 | Frame 32 */
-  initialActiveFrame?: 'Frame 28' | 'Frame 29' | 'Frame 30' | 'Frame 31' | 'Frame 32';
-  onFrameChange?: (frame: string) => void;
+  /** Optional custom title overlay */
+  title?: string;
+  /** Interactive click handler */
+  onClick?: () => void;
 }
 
 export const UltraCarousel: React.FC<UltraCarouselProps> = ({
-  initialActiveFrame = 'Frame 28',
-  onFrameChange,
+  title = 'Ultra Carousel',
+  onClick,
 }) => {
-  const [activeFrame, setActiveFrame] = useState(initialActiveFrame);
-
-  const frames = [
-    { id: 'Frame 28', label: 'Front 3/4' },
-    { id: 'Frame 29', label: 'Side Profile' },
-    { id: 'Frame 30', label: 'Rear 3/4' },
-    { id: 'Frame 31', label: 'Cockpit' },
-    { id: 'Frame 32', label: 'Aero Wheels' }
-  ];
-
-  const handleFrameClick = (id: string) => {
-    setActiveFrame(id as any);
-    if (onFrameChange) onFrameChange(id);
-  };
-
   return (
-    <div className="ultra-carousel" data-layer-name="Ultra carousel">
-      <div className="ultra-carousel-track">
-        {frames.map((frame) => (
-          <div 
-            key={frame.id}
-            className={`ultra-carousel-item ${activeFrame === frame.id ? 'is-active' : ''}`}
-            onClick={() => handleFrameClick(frame.id)}
-          >
-            <div className="ultra-carousel-placeholder-img">
-              {/* This represents the car angle image in Figma */}
-              <span className="ultra-carousel-label">{frame.label}</span>
-            </div>
-            {activeFrame === frame.id && <div className="ultra-carousel-active-indicator" />}
-          </div>
-        ))}
+    <div className="byd-figma-component-wrapper ultracarousel-wrapper" onClick={onClick} data-layer-name="UltraCarousel">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Banners & Carousels</span>
+      </div>
+      <p className="byd-component-desc">Specs & feature highlight multi-card carousel strip.</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/UltraCarousel.png" 
+          alt="Ultra Carousel" 
+          className="byd-component-figma-img" 
+          loading="lazy"
+        />
       </div>
     </div>
   );

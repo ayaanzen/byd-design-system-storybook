@@ -2,29 +2,31 @@ import React from 'react';
 import './Features2.css';
 
 export interface Features2Props {
-  /** Figma Variant: Default | Variant2 | Variant3 | Variant4 | Variant5 */
-  property1?: 'Default' | 'Variant2' | 'Variant3' | 'Variant4' | 'Variant5';
-  heading?: string;
-  subtitle?: string;
+  /** Optional custom title overlay */
+  title?: string;
+  /** Interactive click handler */
+  onClick?: () => void;
 }
 
 export const Features2: React.FC<Features2Props> = ({
-  property1 = 'Default',
-  heading,
-  subtitle,
+  title = 'Features 2 - Interior Luxury',
+  onClick,
 }) => {
-  const items: Record<string, { h: string; s: string }> = {
-    Default: { h: 'Cell-to-Body (CTB) Architecture', s: 'Battery integrated as structural chassis component' },
-    Variant2: { h: 'e-Platform 3.0 EV Chassis', s: 'Dedicated 800V high efficiency architecture' },
-    Variant3: { h: 'iTAC Intelligent Torque Adaption', s: 'Millisecond torque distribution response' },
-    Variant4: { h: 'Dynaudio 12-Speaker Sound', s: '770W premium spatial automotive acoustic audio' },
-    Variant5: { h: 'Frequency Selective Damping', s: 'Adaptive hydraulic suspension smoothness' }
-  };
-  const curr = items[property1] || items.Default;
   return (
-    <div className="uedp-component-14" data-layer-name="Component 14">
-      <div className="uedp-component-14__heading">{heading || curr.h}</div>
-      <div className="uedp-component-14__sub">{subtitle || curr.s}</div>
+    <div className="byd-figma-component-wrapper features2-wrapper" onClick={onClick} data-layer-name="Features2">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Feature Grids</span>
+      </div>
+      <p className="byd-component-desc">Interior showcase grid (seats, dashboard, console, ambient lighting, materials).</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/Features2.png" 
+          alt="Features 2 - Interior Luxury" 
+          className="byd-component-figma-img" 
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };

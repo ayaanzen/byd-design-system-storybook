@@ -2,34 +2,31 @@ import React from 'react';
 import './CarouselSlots2.css';
 
 export interface CarouselSlots2Props {
-  /** Figma Variant: Default | Variant2 | Variant3 | Variant4 | Variant5 */
-  property1?: 'Default' | 'Variant2' | 'Variant3' | 'Variant4' | 'Variant5';
-  onSelect?: (variant: string) => void;
+  /** Optional custom title overlay */
+  title?: string;
+  /** Interactive click handler */
+  onClick?: () => void;
 }
 
 export const CarouselSlots2: React.FC<CarouselSlots2Props> = ({
-  property1 = 'Default',
-  onSelect,
+  title = 'Carousel Slots 2',
+  onClick,
 }) => {
-  const colors = [
-    { id: 'Default', hex: '#EC1C24', name: 'BYD Emperor Red' },
-    { id: 'Variant2', hex: '#0A0A0A', name: 'Cosmos Black' },
-    { id: 'Variant3', hex: '#FFFFFF', name: 'Aurora White' },
-    { id: 'Variant4', hex: '#4B5563', name: 'Atlantis Gray' },
-    { id: 'Variant5', hex: '#64748B', name: 'Shark Gray' },
-  ];
-
   return (
-    <div className="uedp-component-24" data-layer-name="Component 24">
-      {colors.map(c => (
-        <div
-          key={c.id}
-          className={`uedp-component-24__swatch ${property1 === c.id ? 'active' : ''}`}
-          style={{ backgroundColor: c.hex }}
-          title={c.name}
-          onClick={() => onSelect && onSelect(c.id)}
+    <div className="byd-figma-component-wrapper carouselslots2-wrapper" onClick={onClick} data-layer-name="CarouselSlots2">
+      <div className="byd-component-header">
+        <div className="byd-component-title">{title}</div>
+        <span className="byd-component-badge">Banners & Carousels</span>
+      </div>
+      <p className="byd-component-desc">Vehicle angle thumbnail strip slot variant 2.</p>
+      <div className="byd-component-asset-container">
+        <img 
+          src="/figma-assets/CarouselSlots2.png" 
+          alt="Carousel Slots 2" 
+          className="byd-component-figma-img" 
+          loading="lazy"
         />
-      ))}
+      </div>
     </div>
   );
 };
