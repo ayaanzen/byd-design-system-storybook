@@ -1,70 +1,102 @@
-.byd-figma-component-wrapper {
-  background: #0A0A0A;
-  border: 1px solid #262626;
-  border-radius: 16px;
-  padding: 24px;
-  color: #FFFFFF;
+.byd-color-visualizer-card {
+  width: 100%;
+  max-width: 640px;
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   font-family: var(--byd-font-primary, 'Instrument Sans', sans-serif);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: border-color 0.2s ease, transform 0.2s ease;
-  max-width: 100%;
   box-sizing: border-box;
 }
 
-.byd-figma-component-wrapper:hover {
-  border-color: var(--byd-brand-primary, #D80B1A);
+.byd-visualizer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.byd-component-header {
+.byd-visualizer-title {
+  font-family: var(--byd-font-display, 'Krona One', sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+.byd-visualizer-active-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--byd-brand-primary, #D80B1A);
+  background: rgba(216, 11, 26, 0.08);
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.byd-visualizer-img-area {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.7;
+  background-color: #FAFAFA;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.byd-visualizer-car-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.byd-visualizer-badge-360 {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.byd-visualizer-swatches-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
   gap: 16px;
 }
 
-.byd-component-title {
-  font-family: var(--byd-font-display, 'Krona One', sans-serif);
-  font-size: 20px;
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: -0.02em;
-}
-
-.byd-component-badge {
-  background: rgba(216, 11, 26, 0.15);
-  color: var(--byd-brand-primary, #D80B1A);
-  border: 1px solid rgba(216, 11, 26, 0.4);
-  padding: 4px 12px;
-  border-radius: 9999px;
+.byd-swatch-label {
   font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 700;
+  color: #6B7280;
   letter-spacing: 0.05em;
-  white-space: nowrap;
 }
 
-.byd-component-desc {
-  font-size: 14px;
-  color: #A3A3A3;
-  margin: 0 0 20px 0;
-  line-height: 1.5;
-}
-
-.byd-component-asset-container {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #171717;
-  border: 1px solid #333333;
+.byd-swatch-list {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 12px;
 }
 
-.byd-component-figma-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
+.byd-swatch-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.byd-swatch-btn.is-selected {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 3px var(--byd-brand-primary, #D80B1A);
 }

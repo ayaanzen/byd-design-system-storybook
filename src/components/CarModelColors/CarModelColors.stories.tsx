@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { CarModelColors } from './CarModelColors';
 
 const meta: Meta<typeof CarModelColors> = {
-  title: 'BYD Figma Components/CarModelColors',
+  title: 'BYD Figma Components/Car Model Colors',
   component: CarModelColors,
 };
 
@@ -11,6 +11,6 @@ type Story = StoryObj<typeof CarModelColors>;
 
 export const Default: Story = {
   args: {
-    title: 'Car Model Color Visualizer',
+    modelTitle: 'BYD SEAL Color Visualizer',
   },
 };

@@ -2,30 +2,29 @@ import React from 'react';
 import './HomeModel1.css';
 
 export interface HomeModel1Props {
-  /** Optional custom title overlay */
-  title?: string;
-  /** Interactive click handler */
+  modelName?: string;
+  tagline?: string;
+  price?: string;
+  image?: string;
   onClick?: () => void;
 }
 
 export const HomeModel1: React.FC<HomeModel1Props> = ({
-  title = 'Home Model - ATTO 3',
+  modelName = 'ATTO 3',
+  tagline = 'Dynamic EV SUV',
+  price = '₹24.99 Lakh*',
+  image = '/figma-assets/HomeModel1.png',
   onClick,
 }) => {
   return (
-    <div className="byd-figma-component-wrapper homemodel1-wrapper" onClick={onClick} data-layer-name="HomeModel1">
-      <div className="byd-component-header">
-        <div className="byd-component-title">{title}</div>
-        <span className="byd-component-badge">Vehicle Cards</span>
+    <div className="byd-home-model-card" onClick={onClick} data-layer-name="HomeModel1">
+      <div className="byd-model-img-wrapper">
+        <img src={image} alt={modelName} className="byd-model-car-img" />
       </div>
-      <p className="byd-component-desc">BYD ATTO 3 model showcase card with side profile asset and red typography badge.</p>
-      <div className="byd-component-asset-container">
-        <img 
-          src="/figma-assets/HomeModel1.png" 
-          alt="Home Model - ATTO 3" 
-          className="byd-component-figma-img" 
-          loading="lazy"
-        />
+      <div className="byd-model-info">
+        <span className="byd-model-red-badge">{modelName}</span>
+        <p className="byd-model-tagline">{tagline}</p>
+        <div className="byd-model-price">Starting from {price}</div>
       </div>
     </div>
   );
