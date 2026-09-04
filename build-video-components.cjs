@@ -1,4 +1,87 @@
-.byd-video-card-container {
+const fs = require('fs');
+const path = require('path');
+
+const videos = [
+  { name: 'Video1', title: 'BYD SEAL - Dynamic Performance & Aerodynamics', duration: '02:45', model: 'BYD SEAL' },
+  { name: 'Video2', title: 'BYD ATTO 3 - Born Dynamic Electric SUV Showcase', duration: '01:58', model: 'BYD ATTO 3' },
+  { name: 'Video3', title: 'BYD SEALION 7 - Intelligent SUV Coupe Teaser', duration: '03:12', model: 'BYD SEALION 7' },
+  { name: 'Video4', title: 'BYD TANG - 7-Seat Luxury AWD Performance Test', duration: '02:30', model: 'BYD TANG' },
+];
+
+const srcDir = path.join(process.cwd(), 'src', 'components');
+
+videos.forEach(({ name, title, duration, model }) => {
+  const compDir = path.join(srcDir, name);
+  if (!fs.existsSync(compDir)) fs.mkdirSync(compDir, { recursive: true });
+
+  const tsx = `import React, { useState } from 'react';
+import './${name}.css';
+
+export interface ${name}Props {
+  title?: string;
+  duration?: string;
+  modelBadge?: string;
+  thumbnail?: string;
+}
+
+export const ${name}: React.FC<${name}Props> = ({
+  title = '${title}',
+  duration = '${duration}',
+  modelBadge = '${model}',
+  thumbnail = '/figma-assets/${name}.png',
+}) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(35);
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  return (
+    <div className={\`byd-video-card-container \${isPlaying ? 'is-playing' : ''}\`} data-layer-name="${name}">
+      <div className="byd-video-preview-wrapper" onClick={togglePlay}>
+        <img src={thumbnail} alt={title} className="byd-video-thumbnail" />
+        <div className="byd-video-overlay" />
+
+        <span className="byd-video-model-badge">{modelBadge}</span>
+        <span className="byd-video-duration-pill">{duration}</span>
+
+        <button className="byd-video-play-btn" aria-label={isPlaying ? 'Pause' : 'Play'}>
+          {isPlaying ? (
+            <span className="pause-icon">&#10074;&#10074;</span>
+          ) : (
+            <span className="play-icon">&#9654;</span>
+          )}
+        </button>
+
+        {isPlaying && (
+          <div className="byd-video-playing-indicator">
+            <span className="pulse-dot" /> NOW PLAYING
+          </div>
+        )}
+
+        <div className="byd-video-progress-bar">
+          <div className="byd-video-progress-fill" style={{ width: \`\${progress}%\` }} />
+        </div>
+      </div>
+
+      <div className="byd-video-details">
+        <h4 className="byd-video-title">{title}</h4>
+        <div className="byd-video-actions-row">
+          <button className="byd-video-action-btn" onClick={togglePlay}>
+            {isPlaying ? 'PAUSE VIDEO' : 'WATCH PREVIEW'}
+          </button>
+          <button className="byd-video-share-btn" title="Share Video">
+            &#10140;
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+`;
+
+  const css = `.byd-video-card-container {
   width: 100%;
   max-width: 540px;
   background-color: #0A0A0A;
@@ -214,3 +297,24 @@
 .byd-video-share-btn:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+`;
+
+  const story = `import type { Meta, StoryObj } from '@storybook/react';
+import { ${name} } from './${name}';
+
+const meta: Meta<typeof ${name}> = {
+  title: 'BYD Figma Components/${name}',
+  component: ${name},
+};
+
+export default meta;
+type Story = StoryObj<typeof ${name}>;
+
+export const Default: Story = {};
+`;
+
+  fs.writeFileSync(path.join(compDir, `${name}.tsx`), tsx, 'utf8');
+  fs.writeFileSync(path.join(compDir, `${name}.css`), css, 'utf8');
+  fs.writeFileSync(path.join(compDir, `${name}.stories.tsx`), story, 'utf8');
+  console.log(`Generated Video component for ${name}`);
+});

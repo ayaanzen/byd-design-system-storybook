@@ -1,31 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Video4.css';
 
 export interface Video4Props {
-  /** Optional custom title overlay */
   title?: string;
-  /** Interactive click handler */
-  onClick?: () => void;
+  duration?: string;
+  modelBadge?: string;
+  thumbnail?: string;
 }
 
 export const Video4: React.FC<Video4Props> = ({
-  title = 'Video Preview 4',
-  onClick,
+  title = 'BYD TANG - 7-Seat Luxury AWD Performance Test',
+  duration = '02:30',
+  modelBadge = 'BYD TANG',
+  thumbnail = '/figma-assets/Video4.png',
 }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(35);
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
-    <div className="byd-figma-component-wrapper video4-wrapper" onClick={onClick} data-layer-name="Video4">
-      <div className="byd-component-header">
-        <div className="byd-component-title">{title}</div>
-        <span className="byd-component-badge">Media Players</span>
+    <div className={`byd-video-card-container ${isPlaying ? 'is-playing' : ''}`} data-layer-name="Video4">
+      <div className="byd-video-preview-wrapper" onClick={togglePlay}>
+        <img src={thumbnail} alt={title} className="byd-video-thumbnail" />
+        <div className="byd-video-overlay" />
+
+        <span className="byd-video-model-badge">{modelBadge}</span>
+        <span className="byd-video-duration-pill">{duration}</span>
+
+        <button className="byd-video-play-btn" aria-label={isPlaying ? 'Pause' : 'Play'}>
+          {isPlaying ? (
+            <span className="pause-icon">&#10074;&#10074;</span>
+          ) : (
+            <span className="play-icon">&#9654;</span>
+          )}
+        </button>
+
+        {isPlaying && (
+          <div className="byd-video-playing-indicator">
+            <span className="pulse-dot" /> NOW PLAYING
+          </div>
+        )}
+
+        <div className="byd-video-progress-bar">
+          <div className="byd-video-progress-fill" style={{ width: `${progress}%` }} />
+        </div>
       </div>
-      <p className="byd-component-desc">BYD Tang adventure video player preview module.</p>
-      <div className="byd-component-asset-container">
-        <img 
-          src="/figma-assets/Video4.png" 
-          alt="Video Preview 4" 
-          className="byd-component-figma-img" 
-          loading="lazy"
-        />
+
+      <div className="byd-video-details">
+        <h4 className="byd-video-title">{title}</h4>
+        <div className="byd-video-actions-row">
+          <button className="byd-video-action-btn" onClick={togglePlay}>
+            {isPlaying ? 'PAUSE VIDEO' : 'WATCH PREVIEW'}
+          </button>
+          <button className="byd-video-share-btn" title="Share Video">
+            &#10140;
+          </button>
+        </div>
       </div>
     </div>
   );

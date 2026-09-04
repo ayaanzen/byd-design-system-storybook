@@ -9,8 +9,4 @@ const meta: Meta<typeof Video4> = {
 export default meta;
 type Story = StoryObj<typeof Video4>;
 
-export const Default: Story = {
-  args: {
-    title: 'Video Preview 4',
-  },
-};
+export const Default: Story = {};
