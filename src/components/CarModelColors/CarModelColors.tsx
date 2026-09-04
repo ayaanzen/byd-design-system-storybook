@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './CarModelColors.css';
 
-export interface ColorSwatch {
+export interface ColorOption {
   id: string;
   name: string;
   hex: string;
@@ -11,73 +11,79 @@ export interface ColorSwatch {
 
 export interface CarModelColorsProps {
   modelTitle?: string;
-  swatches?: ColorSwatch[];
+  colors?: ColorOption[];
+  initialColorId?: string;
 }
 
-const defaultSwatches: ColorSwatch[] = [
+const defaultColors: ColorOption[] = [
   {
-    id: 'emperor-red',
-    name: 'Emperor Red',
-    hex: '#D80B1A',
-    image: '/figma-assets/CarModelColors.png',
+    id: 'atlantis-gray',
+    name: 'ATLANTIS GRAY',
+    hex: '#2D3B52',
+    image: '/figma-assets/car-color-atlantis-gray.png',
   },
   {
     id: 'cosmos-black',
-    name: 'Cosmos Black',
-    hex: '#0A0A0A',
-    image: '/figma-assets/CarModelColors.png',
+    name: 'COSMOS BLACK',
+    hex: '#1B2026',
+    image: '/figma-assets/car-color-cosmos-black.png',
   },
   {
     id: 'aurora-white',
-    name: 'Aurora White',
-    hex: '#FFFFFF',
-    border: '#E5E7EB',
-    image: '/figma-assets/CarModelColors.png',
+    name: 'AURORA WHITE',
+    hex: '#D8E0E8',
+    border: '#B0BAC5',
+    image: '/figma-assets/car-color-aurora-white.png',
   },
   {
     id: 'shark-gray',
-    name: 'Shark Gray',
-    hex: '#6B7280',
-    image: '/figma-assets/CarModelColors.png',
+    name: 'SHARK GRAY',
+    hex: '#545A61',
+    image: '/figma-assets/car-color-shark-gray.png',
   },
 ];
 
 export const CarModelColors: React.FC<CarModelColorsProps> = ({
   modelTitle = 'BYD SEAL Color Visualizer',
-  swatches = defaultSwatches,
+  colors = defaultColors,
+  initialColorId = 'atlantis-gray',
 }) => {
-  const [selectedColor, setSelectedColor] = useState(swatches[0]);
+  const [activeColor, setActiveColor] = useState<ColorOption>(
+    colors.find((c) => c.id === initialColorId) || colors[0]
+  );
 
   return (
-    <div className="byd-color-visualizer-card" data-layer-name="Car model colors">
-      <div className="byd-visualizer-header">
-        <h3 className="byd-visualizer-title">{modelTitle}</h3>
-        <span className="byd-visualizer-active-name">{selectedColor.name}</span>
-      </div>
-
-      <div className="byd-visualizer-img-area">
+    <div className="byd-car-colors-card" data-layer-name="Car model colors">
+      {/* Main Car Color Display Area */}
+      <div className="byd-car-colors-display">
         <img
-          src={selectedColor.image}
-          alt={selectedColor.name}
-          className="byd-visualizer-car-img"
+          key={activeColor.id}
+          src={activeColor.image}
+          alt={activeColor.name}
+          className="byd-car-colors-img"
         />
-        <div className="byd-visualizer-badge-360">360° VIEW</div>
       </div>
 
-      <div className="byd-visualizer-swatches-row">
-        <span className="byd-swatch-label">SELECT EXTERIOR COLOR:</span>
-        <div className="byd-swatch-list">
-          {swatches.map((color) => (
-            <button
-              key={color.id}
-              className={`byd-swatch-btn ${selectedColor.id === color.id ? 'is-selected' : ''}`}
-              style={{ backgroundColor: color.hex, borderColor: color.border || 'transparent' }}
-              onClick={() => setSelectedColor(color)}
-              title={color.name}
-              aria-label={color.name}
-            />
-          ))}
-        </div>
+      {/* Color Name Label */}
+      <div className="byd-car-colors-label-box">
+        <h4 className="byd-car-color-name">{activeColor.name}</h4>
+      </div>
+
+      {/* Swatch Selection Row */}
+      <div className="byd-car-swatches-row">
+        {colors.map((color) => (
+          <button
+            key={color.id}
+            className={`byd-car-swatch-circle ${activeColor.id === color.id ? 'is-selected' : ''}`}
+            style={{
+              backgroundColor: color.hex,
+              borderColor: color.border || 'transparent',
+            }}
+            onClick={() => setActiveColor(color)}
+            title={color.name}
+            aria-label={color.name}
+          />
+        ))}
       </div>
     </div>
   );

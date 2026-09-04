@@ -1,102 +1,89 @@
-.byd-color-visualizer-card {
+.byd-car-colors-card {
   width: 100%;
-  max-width: 640px;
+  max-width: 720px;
+  margin: 0 auto;
   background-color: #FFFFFF;
-  border-radius: 24px;
+  border-radius: 28px;
   padding: 32px;
   border: 1px solid #E5E7EB;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   font-family: var(--byd-font-primary, 'Instrument Sans', sans-serif);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
 }
 
-.byd-visualizer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.byd-visualizer-title {
-  font-family: var(--byd-font-display, 'Krona One', sans-serif);
-  font-size: 18px;
-  font-weight: 700;
-  color: #000000;
-  margin: 0;
-}
-
-.byd-visualizer-active-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--byd-brand-primary, #D80B1A);
-  background: rgba(216, 11, 26, 0.08);
-  padding: 4px 12px;
-  border-radius: 12px;
-}
-
-.byd-visualizer-img-area {
-  position: relative;
+.byd-car-colors-display {
   width: 100%;
-  aspect-ratio: 1.7;
-  background-color: #FAFAFA;
-  border-radius: 16px;
+  aspect-ratio: 1.6;
+  border-radius: 20px;
   overflow: hidden;
+  background-color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
-.byd-visualizer-car-img {
+.byd-car-colors-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.byd-visualizer-badge-360 {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #FFFFFF;
-  backdrop-filter: blur(4px);
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 11px;
+@keyframes fadeIn {
+  from {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.byd-car-colors-label-box {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.byd-car-color-name {
+  font-family: var(--byd-font-display, 'Krona One', sans-serif);
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  color: #000000;
+  letter-spacing: 0.06em;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-.byd-visualizer-swatches-row {
+.byd-car-swatches-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
 }
 
-.byd-swatch-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: #6B7280;
-  letter-spacing: 0.05em;
-}
-
-.byd-swatch-list {
-  display: flex;
-  gap: 12px;
-}
-
-.byd-swatch-btn {
-  width: 32px;
-  height: 32px;
+.byd-car-swatch-circle {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 3px solid transparent;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
   outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.byd-swatch-btn.is-selected {
-  transform: scale(1.15);
-  box-shadow: 0 0 0 3px var(--byd-brand-primary, #D80B1A);
+.byd-car-swatch-circle:hover {
+  transform: scale(1.12);
+}
+
+.byd-car-swatch-circle.is-selected {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 4px #FFFFFF, 0 0 0 7px var(--byd-brand-primary, #D80B1A);
 }
